@@ -1,9 +1,12 @@
 import json
-with open("shape_data.json", "w") as write_file:
-    json.dump('sphere', write_file)
-with open("size_data.json", "w") as write_file:
-    json.dump(35, write_file)
-with open("defects_data.json", "w") as write_file:
-    json.dump(True,'Replacement, insertion', write_file)
-with open("elements_data.json", "w") as write_file:
-    json.dump('Pd, Ag', write_file)
+
+size_file = open("size_data.json", "r")
+json_sizes = json.load(size_file)
+size_file.close()
+
+json_sizes["particle1"] = 35
+print(json_sizes)
+
+size_file = open("size_data.json", "w")
+json.dump(json_sizes, size_file)
+size_file.close()
